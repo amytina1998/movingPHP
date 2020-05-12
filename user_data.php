@@ -14,7 +14,7 @@
 	$seldb = @mysqli_select_db($db_link, "598_movingApp");
 	if (!$seldb) die("資料庫選擇失敗！");
 
-	$sql_query = "SELECT * FROM `users`";
+	$sql_query = "SELECT * FROM `member`";
 	$result = mysqli_query($db_link, $sql_query);
 
 	for($i = 0; $i < $result->num_rows; $i++){
