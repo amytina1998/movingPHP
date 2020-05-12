@@ -17,13 +17,11 @@
 	$sql_query = "SELECT * FROM `users`";
 	$result = mysqli_query($db_link, $sql_query);
 
-	//echo "result->num_rows=".$result->num_rows;
-	for($i = 0; $i < $result->num_rows; $i++){ //將資料放入array
+	for($i = 0; $i < $result->num_rows; $i++){
 		$row_result[] = mysqli_fetch_assoc($result);
 	}
-	//print_r($row_result);
 
-	$result_json = json_encode($row_result); //將array轉成json
+	$result_json = json_encode($row_result);
 	echo $result_json;
 
 	return $result_json;
