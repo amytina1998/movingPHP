@@ -5,6 +5,7 @@
 
     $sql_query = "SELECT * FROM `member`";
     $result = mysqli_query($db_link, $sql_query);
+    mysqli_close($db_link);
     return $result;
   }
 
