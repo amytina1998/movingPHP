@@ -1,6 +1,6 @@
 CREATE TABLE `order`(
   `order_id`          int(10) NOT NULL AUTO_INCREMENT,
-  `member_id`         int(11) NOT NULL,
+  `member_id`         int(11),
   `moving_date`       date,
   `moving_time`       time,
   `moveout_address`   varchar(100) CHARACTER SET utf8,
