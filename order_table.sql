@@ -6,7 +6,7 @@ CREATE TABLE `order`(
   `moveout_address`   varchar(100) CHARACTER SET utf8,
   `movein_address`    varchar(100) CHARACTER SET utf8,
   `additional`        varchar(300) CHARACTER SET utf8,
-  `estimate_worktime` time         CHARACTER SET utf8,
+  `estimate_worktime` time,
   `fee` int(10),
   PRIMARY KEY(order_id),
   FOREIGN KEY (member_id)
