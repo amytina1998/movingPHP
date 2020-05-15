@@ -7,7 +7,8 @@
   }
 
   function user_data(){
-    $sql_query = "SELECT * FROM `member` WHERE `member_id` = '1'";
+    $member_id = $_SESSION['member_id'];
+    $sql_query = "SELECT * FROM `member` WHERE `member_id` = '".$member_id."'";
     $result = query($sql_query);
     return $result;
   }
