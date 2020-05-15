@@ -6,9 +6,15 @@
     return $result;
   }
 
-  function user_data(){
-    $member_id = $_SESSION['member_id'];
-    $sql_query = "SELECT * FROM `member` WHERE `member_id` = '".$member_id."'";
+  function user_data($member_id){
+    $sql_query = "SELECT * FROM `member` WHERE member_id = '".$member_id."'";
+    $result = query($sql_query);
+    return $result;
+  }
+
+  function order_detail($member_id){
+    $sql_query = "SELECT * FROM `member` NATURAL JOIN `order` ";
+    $sql_query .= "WHERE member_id = '".$member_id."'";
     $result = query($sql_query);
     return $result;
   }
