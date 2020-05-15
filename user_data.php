@@ -5,7 +5,7 @@
 	session_start();
 
 	$func = $_POST['function_name'];
-	echo 'func = '.$func.'<br>';
+	//echo 'func = '.$func.'<br>';
 	if(preg_match("/\ball_user_data\b/",$func)){
 		$result = all_user_data();
 	}
