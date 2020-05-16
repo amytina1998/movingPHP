@@ -8,6 +8,7 @@ CREATE TABLE `order`(
   `additional`        varchar(300) CHARACTER SET utf8,
   `estimate_worktime` time,
   `fee` int(10),
+  `status` enum('scheduled', 'assigned', 'cancel'), 
   PRIMARY KEY(order_id),
   FOREIGN KEY (member_id)
   REFERENCES member(member_id) ON DELETE SET NULL
