@@ -13,6 +13,9 @@
 	elseif (preg_match("/\border_detail\b/",$func)) {
 		$result = order_detail($_POST['member_id']);
 	}
+	elseif (preg_match("/\border_member\b/",$func)) {
+		$result = order_member($_POST['status']);
+	}
 	else{
 		echo "function_name not found.";
 		return;

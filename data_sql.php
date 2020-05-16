@@ -1,13 +1,13 @@
 <?php
 
   function all_user_data(){
-    $sql_query = "SELECT * FROM `member`";
+    $sql_query = "SELECT * FROM `member`;";
     $result = query($sql_query);
     return $result;
   }
 
   function user_data($member_id){
-    $sql_query = "SELECT * FROM `member` WHERE member_id = '".$member_id."'";
+    $sql_query = "SELECT * FROM `member` WHERE member_id = '".$member_id."';";
     $result = query($sql_query);
     return $result;
   }
@@ -17,6 +17,13 @@
     $sql_query .="(`orders` NATURAL JOIN ";
     $sql_query .="(`vehicle_assignmemt` NATURAL JOIN `vehicle`)) ";
     $sql_query .= "WHERE member_id = '".$member_id."';";
+    $result = query($sql_query);
+    return $result;
+  }
+
+  function order_member($status){
+    $sql_query = "SELECT * FROM `member` NATURAL JOIN `orders` ";
+    if($status) $sql_query .= "WHERE status = '".$status."';";
     $result = query($sql_query);
     return $result;
   }
