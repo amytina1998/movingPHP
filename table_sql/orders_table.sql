@@ -1,4 +1,4 @@
-CREATE TABLE `order`(
+CREATE TABLE `orders`(
   `order_id`          int(10) NOT NULL AUTO_INCREMENT,
   `member_id`         int(11),
   `moving_date`       date, /*搬家日期*/

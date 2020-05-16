@@ -13,7 +13,7 @@
   }
 
   function order_detail($member_id){
-    $sql_query = "SELECT * FROM `member` NATURAL JOIN `order` ";
+    $sql_query = "SELECT * FROM `member` NATURAL JOIN `orders` ";
     $sql_query .= "WHERE member_id = '".$member_id."'";
     $result = query($sql_query);
     return $result;
