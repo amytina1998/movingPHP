@@ -6,5 +6,5 @@ CREATE TABLE `vehicle_assignmemt`(
   FOREIGN KEY (order_id)
   REFERENCES orders(order_id) ON DELETE CASCADE,
   FOREIGN KEY (vehicle_id)
-  REFERENCES vehicle(vehicle_id) ON DELETE SET NULL
+  REFERENCES vehicle(vehicle_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
