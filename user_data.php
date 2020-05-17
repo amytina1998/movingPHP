@@ -11,7 +11,7 @@
 		$result = user_data($_POST['member_id']);
 	}
 	elseif (preg_match("/\border_detail\b/",$func)) {
-		$result = order_detail($_POST['member_id']);
+		$result = order_detail($_POST['order_id']);
 	}
 	elseif (preg_match("/\border_member\b/",$func)) {
 		$result = order_member($_POST['status']);
