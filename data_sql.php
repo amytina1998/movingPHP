@@ -27,7 +27,7 @@
     $sql_query = "SELECT * FROM `member` NATURAL JOIN `orders` ";
     $sql_query .= "WHERE moving_date >= DATE(UTC_TIMESTAMP() + INTERVAL 8 HOUR) ";
     $sql_query .= "AND moving_date < ";
-    $sql_query .= "DATE(UTC_TIMESTAMP() + INTERVAL 8 HOU) + INTERVAL 1 DAY;";
+    $sql_query .= "DATE(UTC_TIMESTAMP() + INTERVAL 8 HOUR) + INTERVAL 1 DAY;";
     $result = query($sql_query);
     return $result;
   }
