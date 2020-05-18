@@ -10,11 +10,14 @@
 	elseif(preg_match("/\buser_data\b/",$func)){
 		$result = user_data($_POST['member_id']);
 	}
-	elseif (preg_match("/\border_detail\b/",$func)) {
-		$result = order_detail($_POST['order_id']);
-	}
 	elseif (preg_match("/\border_member\b/",$func)) {
 		$result = order_member($_POST['status']);
+	}
+	elseif (preg_match("/\border_member_today\b/",$func)) {
+		$result = order_member_today();
+	}
+	elseif (preg_match("/\border_detail\b/",$func)) {
+		$result = order_detail($_POST['order_id']);
 	}
 	else{
 		echo "function_name not found.";

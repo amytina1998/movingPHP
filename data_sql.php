@@ -22,6 +22,14 @@
     return $result;
   }
 
+  function order_member_today(){
+    $sql_query = "SELECT * FROM `member` NATURAL JOIN `orders` ";
+    $sql_query .= "WHERE moving_date >= DATE(NOW()) ";
+    $sql_query .= "AND moving_date <= NOW();";
+    $result = query($sql_query);
+    return $result;
+  }
+
   function order_member($status){
     $sql_query = "SELECT * FROM `member` NATURAL JOIN `orders` ";
     if($status) $sql_query .= "WHERE status = '".$status."';";
