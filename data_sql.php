@@ -25,7 +25,7 @@
   function order_member_today(){
     $sql_query = "SELECT * FROM `member` NATURAL JOIN `orders` ";
     $sql_query .= "WHERE moving_date >= DATE(NOW()) ";
-    $sql_query .= "AND moving_date <= NOW();";
+    $sql_query .= "AND moving_date < DATE(NOW()) + INTERVAL 1 DAY";
     $result = query($sql_query);
     return $result;
   }
