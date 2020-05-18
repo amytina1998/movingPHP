@@ -1,4 +1,4 @@
-CREATE TABLE `vehicle_assignmemt`(
+CREATE TABLE `vehicle_assignment`(
   `order_id` int(10),
   `vehicle_id` int(10),
   `num` int(10),
