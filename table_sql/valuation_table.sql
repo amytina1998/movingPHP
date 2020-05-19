@@ -4,6 +4,7 @@ CREATE TABLE `valuation` (
   `valuation_time` datetime,
   `contact_time` varchar(99) CHARACTER SET utf8,
   `internet_price` int(10),
+  `status` enum('self', 'booking', 'match', 'cancel'),
   PRIMARY KEY (valuation_id),
   FOREIGN KEY (order_id)
   REFERENCES orders(order_id) ON DELETE CASCADE
