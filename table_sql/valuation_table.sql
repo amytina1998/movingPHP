@@ -6,5 +6,5 @@ CREATE TABLE `valuation` (
   `internet_price` int(10),
   PRIMARY KEY (valuation_id),
   FOREIGN KEY (order_id)
-  REFERENCES orders(order_id) ON DELETE SET CASCADE
+  REFERENCES orders(order_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
