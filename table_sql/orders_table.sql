@@ -7,7 +7,8 @@ CREATE TABLE `orders`(
   `additional`        varchar(300) CHARACTER SET utf8, /*補充，注意事項*/
   `estimate_worktime` int(3), /*預計工時*/
   `fee` int(10), /*費用*/
-  `status` enum('scheduled', 'assigned', 'cancel'), /*訂單狀態*/
+  `status` enum('evaluating', 'scheduled', 'assigned', 'cancel'), /*訂單狀態*/
+  `last_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (order_id),
   FOREIGN KEY (member_id)
   REFERENCES member(member_id) ON DELETE SET NULL
