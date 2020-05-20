@@ -19,6 +19,12 @@
 	elseif (preg_match("/\border_detail\b/",$func)) {
 		$result = order_detail($_POST['order_id']);
 	}
+	elseif (preg_match("/\bvaluation_member\b/",$func)) {
+		$result = valuation_member($_POST['status']);
+	}
+	elseif (preg_match("/\bvaluation_detail\b/",$func)) {
+		$result = order_detail($_POST['order_id']);
+	}
 	else{
 		echo "function_name not found.";
 		return;
