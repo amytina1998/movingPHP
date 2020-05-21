@@ -58,7 +58,7 @@
     $sql_query .= "LEFT OUTER JOIN ";
     $sql_query .= "(`vehicle_assignment` NATURAL JOIN `vehicle`) ";
     $sql_query .= "ON orders.order_id = vehicle_assignment.order_id) ";
-    $sql_query .= "WHERE order_id = '".$order_id."';";
+    $sql_query .= "WHERE orders.order_id = '".$order_id."';";
     $result = query($sql_query);
     return $result;
   }
