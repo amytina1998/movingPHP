@@ -1,7 +1,7 @@
 CREATE TABLE `self_valuation_company`(
-  `self_valuation_id` int(10),
-  `company_id` int(10),
-  `status` enum('null', 'chosen', 'unchosen'),
+  `self_valuation_id` int(10), /*自助估價單*/
+  `company_id` int(10), /*公司*/
+  `status` enum('null', 'chosen', 'unchosen'), /*是否被選擇*/
   PRIMARY KEY (self_valuation_id, company_id),
   FOREIGN KEY (self_valuation_id)
   REFERENCES self_valuation(self_valuation_id) ON DELETE CASCADE,
