@@ -1,6 +1,7 @@
 CREATE TABLE `orders`(
   `order_id`          int(10) NOT NULL AUTO_INCREMENT,
   `member_id`         int(11),
+  `company_id`        int(10),
   `moving_date`       datetime, /*搬家日期*/
   `moveout_address`   varchar(100) CHARACTER SET utf8, /*搬出地址*/
   `movein_address`    varchar(100) CHARACTER SET utf8, /*搬入地址*/
@@ -13,5 +14,7 @@ CREATE TABLE `orders`(
   ON UPDATE current_timestamp(), /*更新時間*/
   PRIMARY KEY (order_id),
   FOREIGN KEY (member_id)
-  REFERENCES member(member_id) ON DELETE SET NULL
+  REFERENCES member(member_id) ON DELETE SET NULL,
+  FOREIGN KEY (company_id)
+  REFERENCES company(company_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
