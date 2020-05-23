@@ -23,7 +23,7 @@
 		$result = valuation_member($_POST['status']);
 	}
 	elseif (preg_match("/\bvaluation_detail\b/",$func)) {
-		$result = order_detail($_POST['order_id']);
+		$result = valuation_detail($_POST['order_id']);
 	}
 	else{
 		echo "function_name not found.";
