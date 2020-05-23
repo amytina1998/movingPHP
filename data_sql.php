@@ -45,7 +45,7 @@
     $sql_query .= "(`orders` INNER JOIN ";
     $sql_query .= "(`valuation` NATURAL JOIN `valuation_company`) ";
     $sql_query .= "ON orders.order_id = valuation.order_id) ";
-    $sql_query .= "WHERE company_id = '1' ";
+    $sql_query .= "WHERE valuation_company.company_id = '1' ";
     $sql_query .= "AND valuation.status = '".$status."';";
     $result = query($sql_query);
     return $result;
