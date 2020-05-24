@@ -7,22 +7,22 @@
 	if(preg_match("/\ball_user_data\b/",$func)){
 		$result = all_user_data();
 	}
-	elseif(preg_match("/\buser_data\b/",$func)){
+	elseif(!strcmp("user_data", $func)){
 		$result = user_data($_POST['member_id']);
 	}
-	elseif (preg_match("/\border_member\b/",$func)) {
+	elseif (!strcmp("order_members",$func)) {
 		$result = order_member($_POST['status']);
 	}
-	elseif (preg_match("/\border_member_today\b/",$func)) {
+	elseif (!strcmp("order_member_today",$func)) {
 		$result = order_member_today();
 	}
-	elseif (preg_match("/\border_detail\b/",$func)) {
+	elseif (!strcmp("order_detail",$func)) {
 		$result = order_detail($_POST['order_id']);
 	}
-	elseif (preg_match("/\bvaluation_member\b/",$func)) {
+	elseif (!strcmp("valuation_member",$func)) {
 		$result = valuation_member($_POST['status']);
 	}
-	elseif (preg_match("/\bvaluation_detail\b/",$func)) {
+	elseif (!strcmp("valuation_detail",$func)) {
 		$result = valuation_detail($_POST['order_id']);
 	}
 	else{
