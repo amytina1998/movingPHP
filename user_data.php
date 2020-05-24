@@ -10,7 +10,7 @@
 	elseif(!strcmp("user_data", $func)){
 		$result = user_data($_POST['member_id']);
 	}
-	elseif (!strcmp("order_members",$func)) {
+	elseif (!strcmp("order_member",$func)) {
 		$result = order_member($_POST['status']);
 	}
 	elseif (!strcmp("order_member_today",$func)) {
