@@ -44,7 +44,6 @@ function update_vehicleAssignment($order_id, $vehicle_assign){
 	// for($i = 0; $i < $vehicle_assign.length; $i++){
 	// 	echo "$vehicle_assign[".$i."] = ".$vehicle_assign['vehicle_id'];
 	// }
-	echo "vehicle_assign = ".$vehicle_assign;
 	return $vehicle_assign;
 
 	// $result = query($sql_query);
