@@ -13,14 +13,14 @@
 	elseif(!strcmp("add_vehicleDemand", $func)){
 		$result = add_vehicleDemands($_POST['order_id'], $_POST['num'], $_POST['weight'], $_POST['type']);
 	}
+  elseif(!strcmp("update_vehicleAssignment", $func)){
+		$result = update_vehicleAssignment($_POST['order_id'], $_POST['vehicle_assign']);
+	}
 	elseif(!strcmp("update_todayOrder", $func)){
 		$result = update_todayOrder($_POST['order_id'], $_POST['memo'], $_POST['fee']);
 	}
-	elseif(!strcmp("check_status", $func)){
-		$result = check_status($_POST['table'], $_POST['order_id'], $_POST['status']);
-	}
-  elseif(!strcmp("update_vehicleAssignment", $func)){
-		$result = update_vehicleAssignment($_POST['table'], $_POST['vehicle_assign']);
+	elseif(!strcmp("change_status", $func)){
+		$result = change_status($_POST['table'], $_POST['order_id'], $_POST['status']);
 	}
 	elseif(!strcmp("check_status", $func)){
 		$result = check_status($_POST['table'], $_POST['order_id'], $_POST['status']);
