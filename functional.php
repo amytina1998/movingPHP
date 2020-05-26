@@ -10,6 +10,9 @@
 	elseif(!strcmp("update_bookingValuation", $func)){
 		$result = update_bookingValuation($_POST['order_id'], $_POST['moving_date'], $_POST['estimate_worktime'], $_POST['fee']);
 	}
+	elseif(!strcmp("add_vehicleDemand", $func)){
+		$result = add_vehicleDemands($_POST['order_id'], $_POST['num'], $_POST['weight'], $_POST['type']);
+	}
 	elseif(!strcmp("update_todayOrder", $func)){
 		$result = update_todayOrder($_POST['order_id'], $_POST['memo'], $_POST['fee']);
 	}
