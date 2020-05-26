@@ -22,6 +22,14 @@ function update_bookingValuation($order_id, $moving_date, $estimate_worktime, $f
 	else return $result;
 }
 
+function add_vehicleDemand($order_id, $num, $weight, $type){
+	$sql_query = "INSERT INTO `vehicle_demand` VALUES ";
+	$sql_query .="(".$order_id.", ".$num", '".$weight."', '".$type."');";
+	$result = query($sql_query);
+	if(!strcmp($result, "1")) return "success";
+	else return $result;
+}
+
 function update_todayOrder($order_id, $memo, $fee){
 	$sql_query = "UPDATE `orders` SET ";
 	$sql_query .= "memo = '".$memo."', ";
@@ -30,6 +38,18 @@ function update_todayOrder($order_id, $memo, $fee){
 	$result = query($sql_query);
 	if(!strcmp($result, "1")) return "success";
 	else return $result;
+}
+
+function update_vehicleAssignment($order_id, $vehicle_assign){
+	// for($i = 0; $i < $vehicle_assign.length; $i++){
+	// 	echo "$vehicle_assign[".$i."] = ".$vehicle_assign['vehicle_id'];
+	// }
+	echo "vehicle_assign = ".$vehicle_assign;
+
+
+	// $result = query($sql_query);
+	// if(!strcmp($result, "1")) return "success";
+	// else return $result;
 }
 
 function change_status($table, $order_id, $status){
