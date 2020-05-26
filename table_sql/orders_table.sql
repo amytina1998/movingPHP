@@ -9,7 +9,7 @@ CREATE TABLE `orders`(
   `memo`              varchar(300) CHARACTER SET utf8, /*備註*/
   `estimate_worktime` int(3), /*預計工時*/
   `fee`               int(10), /*費用*/
-  `status`            enum('evaluating', 'scheduled', 'assigned', `done`, 'cancel'), /*訂單狀態*/
+  `status`            enum('evaluating', 'scheduled', 'assigned', 'done', 'cancel'), /*訂單狀態*/
   `last_update`       timestamp NOT NULL DEFAULT current_timestamp()
   ON UPDATE current_timestamp(), /*更新時間*/
   PRIMARY KEY (order_id),
