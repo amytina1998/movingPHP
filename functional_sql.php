@@ -24,7 +24,7 @@ function update_bookingValuation($order_id, $moving_date, $estimate_worktime, $f
 
 function add_vehicleDemand($order_id, $num, $weight, $type){
 	$sql_query = "INSERT INTO `vehicle_demand` VALUES ";
-	$sql_query .="(".$order_id.", ".$num", '".$weight."', '".$type."');";
+	$sql_query .="(".$order_id.", ".$num.", '".$weight."', '".$type."');";
 	$result = query($sql_query);
 	if(!strcmp($result, "1")) return "success";
 	else return $result;
@@ -45,7 +45,7 @@ function update_vehicleAssignment($order_id, $vehicle_assign){
 	// 	echo "$vehicle_assign[".$i."] = ".$vehicle_assign['vehicle_id'];
 	// }
 	echo "vehicle_assign = ".$vehicle_assign;
-	retrun $vehicle_assign;
+	return $vehicle_assign;
 
 	// $result = query($sql_query);
 	// if(!strcmp($result, "1")) return "success";
