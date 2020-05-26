@@ -4,7 +4,16 @@
 
 	$func = $_POST['function_name'];
 	//echo 'func = '.$func.'<br>';
-  if(!strcmp("change_status", $func)){
+	if(!strcmp("update_selfValuation", $func)){
+		$result = update_selfValuation( $_POST['order_id'], $_POST['valuation_time']);
+	}
+	elseif(!strcmp("update_bookingValuation", $func)){
+		$result = update_bookingValuation($_POST['order_id'], $_POST['moving_date'], $_POST['estimate_worktime'], $_POST['fee']);
+	}
+	elseif(!strcmp("update_todayOrder", $func)){
+		$result = update_todayOrder($_POST['order_id'], $_POST['memo'], $_POST['fee']);
+	}
+  elseif(!strcmp("change_status", $func)){
 		$result = change_status($_POST['table'], $_POST['order_id'], $_POST['status']);
 	}
 	elseif(!strcmp("check_status", $func)){
@@ -13,6 +22,7 @@
 	else{
 		echo "function_name not found.";
 		return;
+		//$result = query("UPDATE `orders` SET memo = '2' WHERE order_id = 1;");
 	}
   echo $result;
 
