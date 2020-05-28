@@ -10,15 +10,19 @@ function update_selfValuation($order_id, $valuation_time){
 	else return $result;
 }
 
-function update_bookingValuation($order_id, $moving_date, $estimate_worktime, $fee){
+function update_bookingValuation($order_id, $moving_date, $estimate_worktime, $fee, $num, $weight, $type){
 	$sql_query = "UPDATE `orders` SET ";
 	$sql_query .= "moving_date = '".$moving_date."', ";
 	$sql_query .= "estimate_worktime = '".$estimate_worktime."', ";
 	$sql_query .= "fee = ".$fee." ";
 	$sql_query .= "WHERE order_id = ".$order_id.";";
 	$result = query($sql_query);
-	if(!strcmp($result, "1"))
-		return change_status("valuation", $order_id, "match");
+	$result2 = add_vehicleDemand($order_id, $num, $weight, $type);
+	if(!strcmp($result, "1")){
+		if(!strcmp($result2, "success"))
+			return change_status("valuation", $order_id, "match");
+		else return $result2;
+	}
 	else return $result;
 }
 

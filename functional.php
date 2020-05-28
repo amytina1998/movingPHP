@@ -8,7 +8,10 @@
 		$result = update_selfValuation( $_POST['order_id'], $_POST['valuation_time']);
 	}
 	elseif(!strcmp("update_bookingValuation", $func)){
-		$result = update_bookingValuation($_POST['order_id'], $_POST['moving_date'], $_POST['estimate_worktime'], $_POST['fee']);
+		$result = update_bookingValuation(
+			$_POST['order_id'],
+			$_POST['moving_date'], $_POST['estimate_worktime'], $_POST['fee'],
+			$_POST['num'], $_POST['weight'], $_POST['type']);
 	}
 	elseif(!strcmp("add_vehicleDemand", $func)){
 		$result = add_vehicleDemand($_POST['order_id'], $_POST['num'], $_POST['weight'], $_POST['type']);
