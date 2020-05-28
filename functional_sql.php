@@ -43,7 +43,7 @@ function update_todayOrder($order_id, $memo, $fee){
 function update_vehicleAssignment($order_id, $vehicle_assign){
 	$ja = json_decode($vehicle_assign, true);
 	$sql_query = "UPDATE `vehicle_assignment` SET ";
-	$sql_query .= "(".$order_id.", ".$ve.")"
+	$sql_query .= "(".$order_id.", ".$vehicle_assign.")";
 }
 
 function add_vehicleAssignment($order_id, $vehicle_assign){
