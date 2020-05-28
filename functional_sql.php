@@ -41,14 +41,34 @@ function update_todayOrder($order_id, $memo, $fee){
 }
 
 function update_vehicleAssignment($order_id, $vehicle_assign){
-	// for($i = 0; $i < $vehicle_assign.length; $i++){
-	// 	echo "$vehicle_assign[".$i."] = ".$vehicle_assign['vehicle_id'];
-	// }
-	return $vehicle_assign;
+	$ja = json_decode($vehicle_assign, true);
+	$sql_query = "UPDATE `vehicle_assignment` SET ";
+	$sql_query .= "(".$order_id.", ".$ve.")"
+}
 
-	// $result = query($sql_query);
-	// if(!strcmp($result, "1")) return "success";
-	// else return $result;
+function add_vehicleAssignment($order_id, $vehicle_assign){
+	$ja = json_decode($vehicle_assign, true);
+	foreach ($ja as $count => $json) { //取多筆資料
+		$sql_query = "INSERT INTO `vehicle_assignment` VALUES ";
+		$sql_query .= "(".$order_id.", ";
+			foreach ($json as $key => $value) { //取單筆資料裡的值
+				$sql_query .= $value;
+				if(!strcmp($key,"vehicle_id")) $sql_query .= ", ";
+			}
+		$sql_query .= ");";
+
+		$result = query($sql_query);
+		if(!strcmp($result, "1")){
+			echo "success";
+			$check[$key]="success";
+		}
+		elseif(preg_match("/PRIMARY/", $result))
+			update_vehicleAssignment($order_id, $ja[$count]);
+		else{
+			echo $result;
+			$check[$key]=$result;
+		}
+	}
 }
 
 function change_status($table, $order_id, $status){
