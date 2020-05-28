@@ -61,16 +61,10 @@ function update_vehicleAssignment($order_id, $vehicle_assign){
 function add_vehicleAssignment($order_id, $vehicle_assign){
 	$ja = json_decode($vehicle_assign, true);
 	foreach ($ja as $count => $json) { //取多筆資料
+		$vehicle_id = $json['vehicle_id'];
+		$num = $json['num'];
 		$sql_query = "INSERT INTO `vehicle_assignment` VALUES ";
-		$sql_query .= "(".$order_id.", ";
-			foreach ($json as $key => $value) { //取單筆資料裡的值
-				$sql_query .= $value;
-				if(!strcmp($key,"vehicle_id")){
-					$vehicle_id = $value;
-					$sql_query .= ", ";
-				}
-			}
-		$sql_query .= ");";
+		$sql_query .= "(".$order_id.", ".$vehicle_id.", ".$num.");";
 		$result = query($sql_query);
 
 		if(!strcmp($result, "1"))
