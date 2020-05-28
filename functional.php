@@ -19,11 +19,14 @@
   elseif(!strcmp("add_vehicleAssignment", $func)){
 		$result = add_vehicleAssignment($_POST['order_id'], $_POST['vehicle_assign']);
 	}
+	elseif(!strcmp("update_todayOrder", $func)){
+		$result = update_todayOrder($_POST['order_id'], $_POST['memo'], $_POST['fee']);
+	}
 	elseif(!strcmp("update_vehicleAssignment", $func)){
 		$result = update_vehicleAssignment($_POST['order_id'], $_POST['vehicle_assign']);
 	}
-	elseif(!strcmp("update_todayOrder", $func)){
-		$result = update_todayOrder($_POST['order_id'], $_POST['memo'], $_POST['fee']);
+	elseif(!strcmp("update_vehicleAssignment", $func)){
+		$result = add_vehicleAssignment($_POST['order_id'], $_POST['vehicle_assign']);
 	}
 	elseif(!strcmp("change_status", $func)){
 		$result = change_status($_POST['table'], $_POST['order_id'], $_POST['status']);
@@ -36,7 +39,8 @@
 		return;
 		//$result = query("UPDATE `orders` SET memo = '2' WHERE order_id = 1;");
 	}
-  echo $result;
+  //secho $result;
+	print_r($result);
 
 	return $result;
 ?>
