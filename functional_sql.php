@@ -74,7 +74,7 @@ function add_vehicleAssignment($order_id, $vehicle_assign){
 		else
 			$check[$vehicle_id]=$result;
 	}
-	if(count(array_unique($check))===1 && end($check) === "success")
+	if(count(array_unique($check))===1 && end($check)==="success")
 	 return "success";
 	else return $check;
 }
