@@ -40,7 +40,8 @@ function update_todayOrder($order_id, $memo, $fee){
 	$sql_query .= "fee = ".$fee." ";
 	$sql_query .= "WHERE order_id = ".$order_id.";";
 	$result = query($sql_query);
-	if(!strcmp($result, "1")) return "success";
+	if(!strcmp($result, "1"))
+		return change_status("orders", $order_id, "done");
 	else return $result;
 }
 
