@@ -21,9 +21,9 @@ function update_bookingValuation($order_id, $moving_date, $estimate_worktime, $f
 	if(!strcmp($result, "1")){
 		if(!strcmp($result2, "success"))
 			return change_status("valuation", $order_id, "match");
-		else return $result2;
+		else return "vehicle_assignment: ".$result2;
 	}
-	else return $result;
+	else return "bookingValuation: ".$result;
 }
 
 function add_vehicleDemand($order_id, $num, $weight, $type){
