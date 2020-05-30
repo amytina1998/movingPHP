@@ -37,9 +37,9 @@
 	else{
 		echo "function_name not found.";
 		return;
-		//$result = query("UPDATE `orders` SET memo = '2' WHERE order_id = 1;");
 	}
-  //secho $result;
+	
+  //echo $result;
 	print_r($result);
 
 	return $result;

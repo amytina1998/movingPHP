@@ -32,10 +32,17 @@
 
   function order_detail($order_id){
     $sql_query = "SELECT * FROM `member` NATURAL JOIN ";
-    $sql_query .="(`orders` LEFT OUTER JOIN ";
-    $sql_query .="(`vehicle_assignment` NATURAL JOIN `vehicle`) ";
-    $sql_query .="ON orders.order_id = vehicle_assignment.order_id) ";
-    $sql_query .="WHERE orders.order_id = '".$order_id."';";
+    $sql_query .= "(`orders` LEFT OUTER JOIN ";
+    $sql_query .= "(`vehicle_assignment` NATURAL JOIN `vehicle`) ";
+    $sql_query .= "ON orders.order_id = vehicle_assignment.order_id) ";
+    $sql_query .= "WHERE orders.order_id = '".$order_id."';";
+    $result = query($sql_query);
+    return $result;
+  }
+
+  function staff_detail($order_id){
+    $sql_query = "SELECT * FROM `staff` NATURAL JOIN `staff_assignment` ";
+    $sql_query .= "WHERE staff_assignment.order_id = ".$order_id.";";
     $result = query($sql_query);
     return $result;
   }
@@ -57,7 +64,7 @@
     $sql_query .= "ON orders.order_id = valuation.order_id) ";
     $sql_query .= "LEFT OUTER JOIN `vehicle_demand` ";
     $sql_query .= "ON orders.order_id = vehicle_demand.order_id) ";
-    $sql_query .= "WHERE orders.order_id = '".$order_id."';";
+    $sql_query .= "WHERE orders.order_id = ".$order_id.";";
     $result = query($sql_query);
     return $result;
   }
