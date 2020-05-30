@@ -31,11 +31,16 @@
   }
 
   function order_detail($order_id){
-    $sql_query = "SELECT * FROM `member` NATURAL JOIN ";
-    $sql_query .= "(`orders` LEFT OUTER JOIN ";
-    $sql_query .= "(`vehicle_assignment` NATURAL JOIN `vehicle`) ";
-    $sql_query .= "ON orders.order_id = vehicle_assignment.order_id) ";
+    $sql_query = "SELECT * FROM `member` NATURAL JOIN `orders` ";
     $sql_query .= "WHERE orders.order_id = '".$order_id."';";
+    $result = query($sql_query);
+    return $result;
+  }
+
+  function vehicle_detail($order_id){
+    $sql_query = "SELECT * FROM ";
+    $sql_query .= "`vehicle` NATURAL JOIN `vehicle_assignment` ";
+    $sql_query .= "WHERE vehicle_assignment.order_id = ".$order_id.";";
     $result = query($sql_query);
     return $result;
   }

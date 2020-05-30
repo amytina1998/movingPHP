@@ -18,7 +18,7 @@
 
   function furniture_room_detail($order_id){
     $sql_query = "SELECT * FROM `furniture` ";
-    $sql_query .= "JOIN `room` ";
+    $sql_query .= "LEFT OUTER JOIN `room` ";
     $sql_query .= "ON furniture.room_id = room.room_id ";
     $sql_query .= "WHERE furniture.order_id = ".$order_id." ";
     $sql_query .= "ORDER BY floor ASC;";

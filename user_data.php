@@ -5,40 +5,39 @@
 	$func = $_POST['function_name'];
 	//echo 'func = '.$func.'<br>';
 	if(preg_match("/\ball_user_data\b/",$func)){
-		$result = all_user_data();
+		$result[] = all_user_data();
 	}
 	elseif(!strcmp("user_data", $func)){
-		$result = user_data($_POST['member_id']);
+		$result[] = user_data($_POST['member_id']);
 	}
 	elseif (!strcmp("order_member",$func)) {
-		$result = order_member($_POST['status']);
+		$result[] = order_member($_POST['status']);
 	}
 	elseif (!strcmp("order_member_today",$func)) {
-		$result = order_member_today();
+		$result[] = order_member_today();
 	}
 	elseif (!strcmp("order_detail",$func)) {
-		$result = order_detail($_POST['order_id']);
-		$result2 = staff_detail($_POST['order_id']);
+		$result[] = order_detail($_POST['order_id']);
+		$result[] = vehicle_detail($_POST['order_id']);
+		$result[] = staff_detail($_POST['order_id']);
 	}
 	elseif (!strcmp("valuation_member",$func)) {
-		$result = valuation_member($_POST['status']);
+		$result[] = valuation_member($_POST['status']);
 	}
 	elseif (!strcmp("valuation_detail",$func)) {
-		$result = valuation_detail($_POST['order_id']);
+		$result[] = valuation_detail($_POST['order_id']);
 	}
 	elseif (!strcmp("staff_detail",$func)) {
-		$result = staff_detail($_POST['order_id']);
+		$result[] = staff_detail($_POST['order_id']);
 	}
 	else{
 		echo "function_name not found.";
 		return;
 	}
 
-	for($i = 0; $i < $result->num_rows; $i++)
-		$row_result[] = mysqli_fetch_assoc($result);
-	if(isset($result2))
-		for($i = 0; $i < $result2->num_rows; $i++)
-			$row_result[] = mysqli_fetch_assoc($result2);
+	for($i = 0; $i < count($result); $i++)
+		for($ii = 0; $ii < $result[$i]->num_rows; $ii++)
+			$row_result[] = mysqli_fetch_assoc($result[$i]);
 
 	$result_json = json_encode($row_result);
 	echo $result_json;
