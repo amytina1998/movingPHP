@@ -26,6 +26,9 @@
 	elseif (!strcmp("valuation_detail",$func)) {
 		$result = valuation_detail($_POST['order_id']);
 	}
+	elseif (!strcmp("staff_detail",$func)) {
+		$result = staff_detail($_POST['order_id']);
+	}
 	else{
 		echo "function_name not found.";
 		return;
@@ -34,7 +37,7 @@
 	for($i = 0; $i < $result->num_rows; $i++)
 		$row_result[] = mysqli_fetch_assoc($result);
 	if(isset($result2))
-		for($i = 0; $i < $result->num_rows; $i++)
+		for($i = 0; $i < $result2->num_rows; $i++)
 			$row_result[] = mysqli_fetch_assoc($result2);
 
 	$result_json = json_encode($row_result);
