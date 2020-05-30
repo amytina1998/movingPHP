@@ -1,4 +1,4 @@
-INSERT INTO `furniture` (`order_id`, `room_id`, `name`, `num`) VALUES
+INSERT INTO `furniture` (`order_id`, `room_id`, `furniture_name`, `num`) VALUES
 (1, 1, '單人沙發', 3),
 (1, 1, '按摩椅', 2),
 (1, 2, '餐桌椅',  6),

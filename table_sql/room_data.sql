@@ -1,4 +1,4 @@
-INSERT INTO `room` (`order_id`, `floor`, `name`) VALUES
+INSERT INTO `room` (`order_id`, `floor`, `room_name`) VALUES
 (1, 1, '臥室'),
 (1, 2, '廚房'),
 (1, 4, '書房'),
