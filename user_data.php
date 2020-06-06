@@ -11,8 +11,8 @@
 		$result[] = user_data($_POST['member_id']);
 	}
 	elseif (!strcmp("order_member",$func)) {
-		$result[] = order_member($_POST['status'], 1);
-		$result[] = order_member($_POST['status'], 0);
+		$result[] = order_member($_POST['status'], TRUE);
+		$result[] = order_member($_POST['status'], FALSE);
 	}
 	elseif (!strcmp("order_member_today",$func)) {
 		$result[] = order_member_today();
@@ -36,9 +36,9 @@
 		return;
 	}
 
-	for($i = 0; $i < count($result); $i++)
-		for($ii = 0; $ii < $result[$i]->num_rows; $ii++)
-			$row_result[] = mysqli_fetch_assoc($result[$i]);
+	for($i = 0, $ii = 0; $i < count($result); $i++)
+		for(; $ii < $result[$i]->num_rows; $ii++)
+			$row_result[] = mysqli_fetch_assoc($result[$ii]);
 
 	$result_json = json_encode($row_result);
 	echo $result_json;
