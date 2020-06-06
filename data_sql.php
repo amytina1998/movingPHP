@@ -14,10 +14,8 @@
 
   function order_member($status, $new){
     $sql_query = "SELECT * FROM `member` NATURAL JOIN `orders` ";
-    if($status){
-      $sql_query .= "WHERE status = '".$status."'";
-      $sql_query .= "AND new = ".$new.";";
-    }
+    $sql_query .= "WHERE status = '".$status."'";
+    $sql_query .= "AND new = ".$new.";";
     $result = query($sql_query);
     return $result;
   }
