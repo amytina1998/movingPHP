@@ -4,6 +4,7 @@ function update_new($order_id, $new){
 	$sql_query = "UPDATE `orders` ";
 	$sql_query .= "SET new = ".$new." ";
 	$sql_query .= "WHERE order_id = ".$order_id.";";
+	$result = query($sql_query);
 	if(!strcmp($result, "1")) return "success";
 	else return $result;
 }
