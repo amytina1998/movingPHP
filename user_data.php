@@ -36,9 +36,9 @@
 		return;
 	}
 
-	for($i = 0; $i < count($result); $i++)
-		for($ii = 0; $ii < $result[$i]->num_rows; $ii++)
-			$row_result[] = mysqli_fetch_assoc($result[$i*$result[$i]->num_rows+$ii]);
+	for($i = 0, $iii = 0; $i < count($result); $i++)
+			for($ii = 0; $ii < $result[$i]->num_rows; $ii++, $iii++)
+				$row_result[] = mysqli_fetch_assoc($result[$i]);
 
 	$result_json = json_encode($row_result);
 	echo $result_json;
