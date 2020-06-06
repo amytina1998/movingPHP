@@ -1,5 +1,13 @@
 <?php
 
+function update_new($order_id, $new){
+	$sql_query = "UPDATE `orders` ";
+	$sql_query .= "SET new = ".$new." ";
+	$sql_query .= "WHERE order_id = ".$order_id.";";
+	if(!strcmp($result, "1")) return "success";
+	else return $result;
+}
+
 function update_selfValuation($order_id, $valuation_time){
 	$sql_query = "UPDATE `valuation` SET ";
 	$sql_query .= "valuation_time = '".$valuation_time."' ";
@@ -91,7 +99,7 @@ function change_status($table, $order_id, $status){
 
 function check_status($table, $order_id, $status){
   $sql_query = "SELECT status FROM `".$table."` ";
-  $sql_query .= "WHERE order_id = '".$order_id."';";
+  $sql_query .= "WHERE order_id = ".$order_id.";";
   $result = query($sql_query);
   $row_result = mysqli_fetch_assoc($result);
   if(!strcmp($row_result['status'], $status)) return "success";

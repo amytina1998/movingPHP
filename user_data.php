@@ -11,7 +11,8 @@
 		$result[] = user_data($_POST['member_id']);
 	}
 	elseif (!strcmp("order_member",$func)) {
-		$result[] = order_member($_POST['status']);
+		$result[] = order_member($_POST['status'], 1);
+		$result[] = order_member($_POST['status'], 0);
 	}
 	elseif (!strcmp("order_member_today",$func)) {
 		$result[] = order_member_today();

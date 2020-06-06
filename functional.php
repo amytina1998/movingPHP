@@ -4,7 +4,10 @@
 
 	$func = $_POST['function_name'];
 	//echo 'func = '.$func.'<br>';
-	if(!strcmp("update_selfValuation", $func)){
+	if(!strcmp("update_new", $func)){
+		$result = update_new($_POST['order_id'], $_POST['new']);
+	}
+	elseif(!strcmp("update_selfValuation", $func)){
 		$result = update_selfValuation( $_POST['order_id'], $_POST['valuation_time']);
 	}
 	elseif(!strcmp("update_bookingValuation", $func)){
@@ -38,7 +41,7 @@
 		echo "function_name not found.";
 		return;
 	}
-	
+
   //echo $result;
 	print_r($result);
 

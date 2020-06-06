@@ -12,9 +12,12 @@
     return $result;
   }
 
-  function order_member($status){
+  function order_member($status, $new){
     $sql_query = "SELECT * FROM `member` NATURAL JOIN `orders` ";
-    if($status) $sql_query .= "WHERE status = '".$status."';";
+    if($status){
+      $sql_query .= "WHERE status = '".$status."'";
+      $sql_query .= "new = ".$new.";";
+    }
     $result = query($sql_query);
     return $result;
   }
