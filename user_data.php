@@ -11,8 +11,14 @@
 		$result[] = user_data($_POST['member_id']);
 	}
 	elseif (!strcmp("order_member",$func)) {
-		$result[] = order_member($_POST['startDate'], $_POST['endDate'], $_POST['status'], 'TRUE');
-		$result[] = order_member($_POST['startDate'], $_POST['endDate'], $_POST['status'], 'FALSE');
+		if(isset($_POST['startDate'])){
+			$result[] = order_member($_POST['startDate'], $_POST['endDate'], $_POST['status'], 'TRUE');
+			$result[] = order_member($_POST['startDate'], $_POST['endDate'], $_POST['status'], 'FALSE');
+		}
+		else{
+			$result[] = order_member('2020-01-01', '2020-12-31', $_POST['status'], 'TRUE');
+			$result[] = order_member('2020-01-01', '2020-12-31', $_POST['status'], 'FALSE');
+		}
 	}
 	elseif (!strcmp("order_member_today",$func)) {
 		$result[] = order_member_today();
