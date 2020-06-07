@@ -95,7 +95,7 @@ function change_status($table, $order_id, $status){
 	$sql_query .="WHERE order_id = '".$order_id."';";
 	$result = query($sql_query);
 	if(!strcmp($result, "1")) {
-		$result = update_new($order_id, 'TRUE')
+		$result = update_new($order_id, 'TRUE');
 		if(!strcmp($result, "success")) return "success";
 		else return $result;
 	}
