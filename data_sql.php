@@ -12,9 +12,11 @@
     return $result;
   }
 
-  function order_member($status, $new){
+  function order_member($startDate, $endDate, $status, $new){
     $sql_query = "SELECT * FROM `member` NATURAL JOIN `orders` ";
-    $sql_query .= "WHERE status = '".$status."'";
+    $sql_query .= "WHERE moving_date > '".$startDate."' ";
+    $sql_query .= "AND moving_date < '".$endDate." 23:59:59' ";
+    $sql_query .= "AND status = '".$status."'";
     $sql_query .= "AND new = ".$new.";";
     $result = query($sql_query);
     return $result;
