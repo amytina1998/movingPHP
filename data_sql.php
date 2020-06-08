@@ -56,6 +56,19 @@
     $result = query($sql_query);
     return $result;
   }
+  function self_valuation_member($startDate, $endDate, $status, $new){
+    $sql_query = "SELECT * FROM `member` NATURAL JOIN ";
+    $sql_query .= "(`orders` INNER JOIN ";
+    $sql_query .= "(`valuation` NATURAL JOIN `valuation_company`) ";
+    $sql_query .= "ON orders.order_id = valuation.order_id) ";
+    $sql_query .= "WHERE valuation_company.company_id = '1' ";
+    $sql_query .= "AND last_update > '".$startDate."' ";
+    $sql_query .= "AND last_update < '".$endDate." 23:59:59' ";
+    $sql_query .= "AND valuation.status = '".$status."' ";
+    $sql_query .= "AND new = ".$new.";";
+    $result = query($sql_query);
+    return $result;
+  }
 
   function valuation_detail($order_id){
     $sql_query = "SELECT * FROM `member` NATURAL JOIN ";

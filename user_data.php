@@ -32,6 +32,16 @@
 			$result[] = valuation_member('2020-01-01', '2020-12-31', $_POST['status'], 'FALSE');
 		}
 	}
+	elseif (!strcmp("self_valuation_member",$func)) {
+		if(isset($_POST['startDate'])){
+			$result[] = self_valuation_member($_POST['startDate'], $_POST['endDate'], $_POST['status'], 'TRUE');
+			$result[] = self_valuation_member($_POST['startDate'], $_POST['endDate'], $_POST['status'], 'FALSE');
+		}
+		else{
+			$result[] = self_valuation_member('2020-01-01', '2020-12-31', $_POST['status'], 'TRUE');
+			$result[] = self_valuation_member('2020-01-01', '2020-12-31', $_POST['status'], 'FALSE');
+		}
+	}
 	elseif (!strcmp("valuation_detail",$func)) {
 		$result[] = valuation_detail($_POST['order_id']);
 	}
