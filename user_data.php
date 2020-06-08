@@ -4,13 +4,7 @@
 
 	$func = $_POST['function_name'];
 	//echo 'func = '.$func.'<br>';
-	if(preg_match("/\ball_user_data\b/",$func)){
-		$result[] = all_user_data();
-	}
-	elseif(!strcmp("user_data", $func)){
-		$result[] = user_data($_POST['member_id']);
-	}
-	elseif (!strcmp("order_member",$func)) {
+	if (!strcmp("order_member",$func)) {
 		if(isset($_POST['startDate'])){
 			$result[] = order_member($_POST['startDate'], $_POST['endDate'], $_POST['status'], 'TRUE');
 			$result[] = order_member($_POST['startDate'], $_POST['endDate'], $_POST['status'], 'FALSE');
@@ -43,6 +37,22 @@
 	}
 	elseif (!strcmp("staff_detail",$func)) {
 		$result[] = staff_detail($_POST['order_id']);
+	}
+	elseif(!strcmp("staff-vehicle_data", $func)){
+		$result[] = all_staff_data();
+		$result[] = all_vehicle_data();
+	}
+	elseif(!strcmp("all_staff_data", $func)){
+		$result[] = all_staff_data();
+	}
+	elseif(!strcmp("all_vehicle_data", $func)){
+		$result[] = all_vehicle_data();
+	}
+	elseif(!strcmp("all_user_data", $func)){
+		$result[] = all_user_data();
+	}
+	elseif(!strcmp("user_data", $func)){
+		$result[] = user_data($_POST['member_id']);
 	}
 	else{
 		echo "function_name not found.";
