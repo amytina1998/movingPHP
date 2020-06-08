@@ -29,7 +29,14 @@
 		$result[] = staff_detail($_POST['order_id']);
 	}
 	elseif (!strcmp("valuation_member",$func)) {
-		$result[] = valuation_member($_POST['status']);
+		if(isset($_POST['startDate'])){
+			$result[] = valuation_member($_POST['startDate'], $_POST['endDate'], $_POST['status'], 'TRUE');
+			$result[] = valuation_member($_POST['startDate'], $_POST['endDate'], $_POST['status'], 'FALSE');
+		}
+		else{
+			$result[] = valuation_member('2020-01-01', '2020-12-31', $_POST['status'], 'TRUE');
+			$result[] = valuation_member('2020-01-01', '2020-12-31', $_POST['status'], 'FALSE');
+		}
 	}
 	elseif (!strcmp("valuation_detail",$func)) {
 		$result[] = valuation_detail($_POST['order_id']);
