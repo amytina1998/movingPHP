@@ -54,39 +54,46 @@ function update_todayOrder($order_id, $memo, $fee){
 	else return $result;
 }
 
-function update_vehicleAssignment($order_id, $vehicle_assign){
-	if(!is_array($vehicle_assign)){
-		$vehicle_assign = json_decode($vehicle_assign, true);
-		$vehicle_assign = $vehicle_assign[0];
+function modify_vehicleAssignment($order_id, $vehicle_assign){
+	$ja = json_decode($vehicle_assign, true);
+	$result_d = delete_vehicleAssignment($order_id, $vehicle_assign); //先刪掉沒被分派到的車子
+	foreach ($ja as $count => $vehicle_id) {
+		$result = add_vehicleAssignment($order_id, $vehicle_id);
+		if(!strcmp($result, "success") || preg_match("/PRIMARY/", $result))
+			$check[$vehicle_id]="success";
+		else
+			$check[$vehicle_id]=$result;
 	}
-	$sql_query = "UPDATE `vehicle_assignment` SET ";
-	$sql_query .= "num = ".$vehicle_assign['num']." ";
+	if(count(array_unique($check))===1 && end($check)==="success"){
+			if(!strcmp($result_d, "success"))
+				return "success";
+			else return "delete error: ".$result_d;
+	}
+	else{
+		if(!strcmp($result_d, "success"))
+			return $check;
+	 	else return "delete error: ".$result_d;
+	}
+}
+
+function delete_vehicleAssignment($order_id, $vehicle_assign){
+	$ja = json_decode($vehicle_assign, true);
+	$sql_query = "DELETE FROM `vehicle_assignment` ";
 	$sql_query .= "WHERE order_id = ".$order_id." ";
-	$sql_query .= "AND vehicle_id = ".$vehicle_assign['vehicle_id'].";";
+	foreach ($ja as $key => $vehicle_id)
+		$sql_query .= "AND vehicle_id <> ".$vehicle_id." "; //不等於
+	$sql_query .= ";";
 	$result = query($sql_query);
 	if(!strcmp($result, "1")) return "success";
 	else return $result;
 }
 
-function add_vehicleAssignment($order_id, $vehicle_assign){
-	$ja = json_decode($vehicle_assign, true);
-	foreach ($ja as $count => $json) { //取多筆資料
-		$vehicle_id = $json['vehicle_id'];
-		$num = $json['num'];
-		$sql_query = "INSERT INTO `vehicle_assignment` VALUES ";
-		$sql_query .= "(".$order_id.", ".$vehicle_id.", ".$num.");";
-		$result = query($sql_query);
-
-		if(!strcmp($result, "1"))
-			$check[$vehicle_id]="success";
-		elseif(preg_match("/PRIMARY/", $result))
-			$check[$vehicle_id]=update_vehicleAssignment($order_id, $ja[$count]);
-		else
-			$check[$vehicle_id]=$result;
-	}
-	if(count(array_unique($check))===1 && end($check)==="success")
-	 return "success";
-	else return $check;
+function add_vehicleAssignment($order_id, $vehicle_id){;
+	$sql_query = "INSERT INTO `vehicle_assignment` VALUES ";
+	$sql_query .= "(".$order_id.", ".$vehicle_id.");";
+	$result = query($sql_query);
+	if(!strcmp($result, "1")) return "success";
+	else return $result;
 }
 
 function change_status($table, $order_id, $status){
