@@ -29,9 +29,10 @@
   }
 
   function vehicle_detail($order_id){
-    $sql_query = "SELECT * FROM ";
-    $sql_query .= "`vehicle` NATURAL JOIN `vehicle_assignment` ";
-    $sql_query .= "WHERE vehicle_assignment.order_id = ".$order_id.";";
+    $sql_query = "SELECT vehicle_weight, vehicle_type, COUNT(*) AS num ";
+    $sql_query .= "FROM `vehicle_assignment` NATURAL JOIN `vehicle` ";
+    $sql_query .= "WHERE order_id = ".$order_id." ";
+    $sql_query .= "GROUP BY vehicle_weight, vehicle_type;";
     $result = query($sql_query);
     return $result;
   }
