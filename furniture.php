@@ -13,6 +13,9 @@
 	elseif (!strcmp("furniture_room_detail",$func)) {
 		$result = furniture_room_detail($_POST['order_id']);
 	}
+	elseif(!strcmp("modify_furniture", $func)){
+		$result = modify_furniture($_POST['order_id'], $_POST['furniture_data']);
+	}
 	elseif(!strcmp("add_furniture", $func)){
 		$result = add_furniture($_POST['order_id'], $_POST['name'], $_POST['num']);
 	}
