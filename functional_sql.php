@@ -66,7 +66,7 @@ function modify_vehicleAssignment($order_id, $vehicle_assign){
 	}
 	if(count(array_unique($check))===1 && end($check)==="success"){
 			if(!strcmp($result_d, "success"))
-				return "success";
+				return change_status("orders", $order_id, "assigned");
 			else return "delete error: ".$result_d;
 	}
 	else{
