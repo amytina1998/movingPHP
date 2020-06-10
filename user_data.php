@@ -45,24 +45,27 @@
 	elseif (!strcmp("valuation_detail",$func)) {
 		$result[] = valuation_detail($_POST['order_id']);
 	}
-	elseif (!strcmp("staff_detail",$func)) {
-		$result[] = staff_detail($_POST['order_id']);
-	}
 	elseif(!strcmp("staff-vehicle_data", $func)){
 		$result[] = all_staff_data();
 		$result[] = all_vehicle_data();
 	}
+	elseif (!strcmp("staff_detail",$func)) {
+		$result[] = staff_detail($_POST['order_id']);
+	}
 	elseif(!strcmp("all_staff_data", $func)){
 		$result[] = all_staff_data();
+	}
+	elseif (!strcmp("vehicle_detail",$func)) {
+		$result[] = vehicle_detail($_POST['order_id']);
 	}
 	elseif(!strcmp("all_vehicle_data", $func)){
 		$result[] = all_vehicle_data();
 	}
-	elseif(!strcmp("all_user_data", $func)){
-		$result[] = all_user_data();
-	}
 	elseif(!strcmp("user_data", $func)){
 		$result[] = user_data($_POST['member_id']);
+	}
+	elseif(!strcmp("all_user_data", $func)){
+		$result[] = all_user_data();
 	}
 	else{
 		echo "function_name not found.";
