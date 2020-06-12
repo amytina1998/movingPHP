@@ -1,5 +1,5 @@
 CREATE TABLE `member`( /*客戶*/
-	`member_id`  		int(10) NOT NULL,	/*客戶ID*/
+	`member_id`  		int(10)			 NOT NULL AUTO_INCREMENT,	/*客戶ID*/
 	`member_name`   varchar(50)  CHARACTER SET utf8,  /*客戶名稱*/
 	`gender`        varchar(10), /*性別*/
 	`phone`         char(10), 	 /*電話號碼*/
