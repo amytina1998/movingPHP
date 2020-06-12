@@ -1,4 +1,4 @@
-CREATE TABLE `furniture` (
+CREATE TABLE `furniture_list` (
 	`furniture_id`		int(10)     NOT NULL AUTO_INCREMENT,
 	`order_id`     		int(10),						  /*訂單*/
 	`room_id`     		int(10),						  /*房間ID*/

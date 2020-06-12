@@ -3,6 +3,7 @@ CREATE TABLE `vehicle`(
   `plate_num` varchar(99) NOT NULL, /*車牌號碼*/
   `vehicle_weight` varchar(10), /*車輛噸位*/
   `vehicle_type` varchar(99)  CHARACTER SET utf8, /*車輛種類*/
+  /*應該要加所屬公司*/
   PRIMARY KEY (vehicle_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

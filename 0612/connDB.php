@@ -8,6 +8,6 @@
   //else echo "資料連結成功";
   mysqli_query($db_link, "SET NAMES 'utf8'");
 
-  $seldb = @mysqli_select_db($db_link, "598_test");
+  $seldb = @mysqli_select_db($db_link, "598_test_0612");
   if (!$seldb) die("資料庫選擇失敗！");
 ?>
